@@ -30,4 +30,11 @@ item variable character
 size variable character
 
 Queries:
-SELECT artist FROM music WHERE song is 'far from home';
+SELECT artist FROM music WHERE song = 'far from home';
+SELECT music.artist, merch.artist, merch.items FROM music WHERE artist = 'Five Finger Death Punch' CROSS JOIN merch ON music.artist = merch.artist;
+SELECT song FROM music WHERE artist LIKE '%dragon%';
+SELECT item FROM merch WHERE size = 'l';
+SELECT album FROM music WHERE song LIKE 'reise' AND artist LIKE 'rammstein';
+SELECT username FROM users WHERE country = 'ireland';
+UPDATE merch SET size = xl WHERE item = shirt;
+DELETE FROM users WHERE id = 3;
