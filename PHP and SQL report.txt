@@ -1,40 +1,40 @@
-config.php: Connects to the sql database. In a seperate file to use the include command in other files.
-
-search.php: Takes input from the search form, queries the input against the music database to search for content, matching against anything like the entered term, then returns and displays any results to the page along with the number of results. If nothing is entered into the form, tells the user to enter a search term.
-
-registration.php: Takes input for username, password, email address, and country, from the registration form, queries the user database and inserts the information into the next available slot in the database. Instead of inserting the password, adds random characters to the password and stores that in place of the password. Also sends an email confirmation upon successful registration. If unable to find the users email address, displays that the email address could not be found. If the email is not sent, displays the email could not be sent.
-
-login.php: Takes input for username and password from the login form, queries the users database and checks the input against the stored information. If the username and password do not match the database, displays that either the username or password is incorrect.
-
-purchase.php: Queries the users database upon a purchase being made, retrieves the email address for that user and sends an email to the user confirming their purchase.
-
-Database design: 3 tables
-Table users has 5 columns
-id serial number to be unique and autoincrement primary key not null 
-username variable character
-password variable character
-email variable character
-country variable character
-
-Table music: 6 columns
-artist variable character primary key
-song variable character
-album variable character
-genre variable character
-year variable character
-publisher variable character
-
-Table merch: 3 columns
-artist variable character primary key, relates to primary key from music table
-item variable character
-size variable character
-
-Queries:
-SELECT artist FROM music WHERE song = 'far from home';
-SELECT music.artist, merch.artist, merch.items FROM music WHERE artist = 'Five Finger Death Punch' CROSS JOIN merch ON music.artist = merch.artist;
-SELECT song FROM music WHERE artist LIKE '%dragon%';
-SELECT item FROM merch WHERE size = 'l';
-SELECT album FROM music WHERE song LIKE 'reise' AND artist LIKE 'rammstein';
-SELECT username FROM users WHERE country = 'ireland';
-UPDATE merch SET size = xl WHERE item = shirt;
-DELETE FROM users WHERE id = 3;
+config.php: Connects to the sql database. In a seperate file to use the include command in other files.
+
+search.php: Takes input from the search form, queries the input against the music database to search for content, matching against anything like the entered term, then returns and displays any results to the page along with the number of results. If nothing is entered into the form, tells the user to enter a search term.
+
+registration.php: Takes input for username, password, email address, and country, from the registration form, queries the user database and inserts the information into the next available slot in the database. Instead of inserting the password, adds random characters to the password and stores that in place of the password. Also sends an email confirmation upon successful registration. If unable to find the users email address, displays that the email address could not be found. If the email is not sent, displays the email could not be sent.
+
+login.php: Takes input for username and password from the login form, queries the users database and checks the input against the stored information. If the username and password do not match the database, displays that either the username or password is incorrect.
+
+purchase.php: Queries the users database upon a purchase being made, retrieves the email address for that user and sends an email to the user confirming their purchase.
+
+Database design: 3 tables
+Table users has 5 columns
+id serial number to be unique and autoincrement primary key not null 
+username variable character
+password variable character
+email variable character
+country variable character
+
+Table music: 6 columns
+artist variable character primary key
+song variable character
+album variable character
+genre variable character
+year variable character
+publisher variable character
+
+Table merch: 3 columns
+artist variable character primary key, relates to primary key from music table
+item variable character
+size variable character
+
+Queries:
+SELECT artist FROM music WHERE song = 'far from home';
+SELECT music.artist, merch.artist, merch.items FROM music WHERE artist = 'Five Finger Death Punch' CROSS JOIN merch ON music.artist = merch.artist;
+SELECT song FROM music WHERE artist LIKE '%dragon%';
+SELECT item FROM merch WHERE size = 'l';
+SELECT album FROM music WHERE song LIKE 'reise' AND artist LIKE 'rammstein';
+SELECT username FROM users WHERE country = 'ireland';
+UPDATE merch SET size = xl WHERE item = shirt;
+DELETE FROM users WHERE id = 3;
